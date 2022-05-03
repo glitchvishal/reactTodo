@@ -12,7 +12,17 @@ const Todo = () => {
 
 
   return (
-    <div>Todo</div>
+    <>
+      <div>
+        <from onSubmit={handleSubmit}>
+          {alert.show && <Alert {...alert} removeAlert={showAlert} list={list} />}
+          <h3>Todo List</h3>
+          <div>
+            <input type="text" className="form-control" placeholder="write your list" />
+          </div>
+        </from>
+      </div>
+    </>
   )
 }
 
