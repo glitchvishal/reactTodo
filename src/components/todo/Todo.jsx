@@ -10,7 +10,30 @@ const Todo = () => {
   const [editId, setEditId] = useState(null);
   const [alert, setAlert] = useState({show:false, message:"", type:""});
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if(!name) {
+      showAlert(true,"danger","Please Add Something");
+    } else if(name && edit){
+      setEdit(
+        list.map((item) => {
+          if(item.id === editId){
+            return{...item, title:name}
+          }
+          return item
+        })
+      )
+      setName("");
+      setEditId(null);
+      setEdit(false)
+      showAlert(true,"success", "value change");
+    }else{
+      showAlert(true,"success", "list update");
+      const newItem ={id:new Date().getTime().toString(), title:name}
+      setList([...item, newItem])
+      setName("");
+    }
+  };
   const showAlert = () => {};
   const removeItems = () => {};
   const editItems = () => {};
